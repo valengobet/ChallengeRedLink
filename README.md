@@ -2,9 +2,9 @@
 ![image](https://github.com/user-attachments/assets/d44b1f80-e99c-4e39-98f5-ee0f3214717d)
 ### Descripcion
 Este repositorio contiene el desarrollo del MVP cuyo objetivo es implementar una API que permita:
-    1.	Gestionar el acceso de empleados mediante un login con número de DNI.
-    2.	Consultar el monto del préstamo disponible para los usuarios logueados.
-    3.	Generar un reporte diario de los usuarios que visualizaron el préstamo disponible.
+    - Gestionar el acceso de empleados mediante un login con número de DNI.
+    - Consultar el monto del préstamo disponible para los usuarios logueados.
+    - Generar un reporte diario de los usuarios que visualizaron el préstamo disponible.
 
 ### Casos de uso principales:
 	- Si el DNI no es reconocido, el usuario no podrá acceder al sistema.
