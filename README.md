@@ -18,7 +18,8 @@ Este repositorio contiene el desarrollo del MVP solicitado por el banco TuPlataC
 	- Maven 3.8+
 
 	3.	Configuración del proyecto:
- - El proyecto utiliza una base de datos en memoria H2 para simplificar el desarrollo. No se requiere configuración adicional.
+    - El proyecto utiliza una base de datos en memoria H2 para simplificar el desarrollo. No se requiere configuración adicional.
+ 
 
 
 
