@@ -5,12 +5,12 @@ Este repositorio contiene el desarrollo del MVP solicitado por el banco TuPlataC
 	2.	Consultar el monto del préstamo disponible para los usuarios logueados.
 	3.	Generar un reporte diario de los usuarios que visualizaron el préstamo disponible.
 
-###Casos de uso principales:
+### Casos de uso principales:
 	- Si el DNI no es reconocido, el usuario no podrá acceder al sistema.
 	- Si el DNI es válido pero no tiene un préstamo asociado, se mostrará un mensaje indicando la falta de un crédito disponible.
 	- Si el DNI es válido y tiene un préstamo disponible, se mostrará el importe correspondiente.
 
-###Instrucciones para levantar el proyecto
+### Instrucciones para levantar el proyecto
 	1.	Clonar el repositorio:
 
 	2.	Requisitos previos:
