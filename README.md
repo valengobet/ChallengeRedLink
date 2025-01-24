@@ -24,9 +24,9 @@ Este repositorio contiene el desarrollo del MVP cuyo objetivo es implementar una
     			- JDBC URL: jdbc:h2:mem:dbprueba
        			- User Name: prueba
 	Una vez logueados en la consola ejecutar la siguiente query sql:
- 	```
-  	INSERT INTO EMPLOYEES VALUES(10.0, null, 5, 5), (5.0, null, 2, 2), (null, null, 3, 3);
-   	```
+ ```
+ INSERT INTO EMPLOYEES VALUES(10.0, null, 5, 5), (5.0, null, 2, 2), (null, null, 3, 3);
+ ```
 
 ### Diagrama
 ![image](https://github.com/user-attachments/assets/d44b1f80-e99c-4e39-98f5-ee0f3214717d)
