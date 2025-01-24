@@ -1,7 +1,6 @@
 package com.TuPlataCrece.MVP.controllers;
 
-import com.TuPlataCrece.MVP.exceptions.EmpleadoNotFoundException;
-import com.TuPlataCrece.MVP.exceptions.EmpleadoSinImporteException;
+import com.TuPlataCrece.MVP.dtos.Response;
 import com.TuPlataCrece.MVP.services.LoginUseCase;
 import com.TuPlataCrece.MVP.services.VisualizadosUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +19,14 @@ public class PrestamosController {
     private VisualizadosUseCase visualizadosUseCase;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String dni) {
-        try {
-            String response = loginUseCase.login(dni);
+    public ResponseEntity<Response> login(@RequestParam String dni) {
+        Response response = loginUseCase.login(dni);
+        if(response.tienePrestamo()) {
             return ResponseEntity.ok(response);
-        } catch (EmpleadoNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        } catch(EmpleadoSinImporteException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } else if(response.empleadoInvalido()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
 

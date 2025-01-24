@@ -12,26 +12,30 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 @SpringBootTest
-class DniValidoConPrestamoTests {
+class ListaVisualizacionesTests {
     @Autowired
     private PrestamosController controller;
     @Autowired
     private EmpleadoRepository repository;
-    private String dni;
-    private Double importe;
 
     @BeforeEach
     void setup() {
-        var empleado = repository.save(new Empleado("1", 1000.0));
-        this.dni = empleado.getDni();
-        this.importe = empleado.getImporte();
+        var empleado1 = repository.save(new Empleado("1", 1000.0));
+        var empleado2 = repository.save(new Empleado("2", 500.0));
+        var empleado3 = repository.save(new Empleado("3", null));
+        controller.login(empleado1.getDni());
+        controller.login(empleado2.getDni());
     }
 
     @Test
     void ok() {
-        ResponseEntity<Response> response = controller.login(dni);
-        Assertions.assertEquals(response.getStatusCode(), HttpStatusCode.valueOf(200));
-        Assertions.assertEquals(response.getBody().getMensaje(), "Se puede solicitar un prestamo por el importe: " + importe);
+        List<String> visualizaciones = controller.auditViewsToday();
+        Assertions.assertEquals(visualizaciones.size(), 2);
+        Assertions.assertEquals(visualizaciones.contains("1"), true);
+        Assertions.assertEquals(visualizaciones.contains("2"), true);
+        Assertions.assertEquals(visualizaciones.contains("3"), false);
     }
 }

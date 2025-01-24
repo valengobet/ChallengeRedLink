@@ -1,6 +1,7 @@
 package com.TuPlataCrece.MVP;
 
 import com.TuPlataCrece.MVP.controllers.PrestamosController;
+import com.TuPlataCrece.MVP.dtos.Response;
 import com.TuPlataCrece.MVP.models.Empleado;
 import com.TuPlataCrece.MVP.models.EmpleadoRepository;
 import org.junit.jupiter.api.Assertions;
@@ -27,8 +28,8 @@ class DniValidoSinPrestamoTests {
 
     @Test
     void ok() {
-        ResponseEntity<String> response = controller.login(dni);
+        ResponseEntity<Response> response = controller.login(dni);
         Assertions.assertEquals(response.getStatusCode(), HttpStatusCode.valueOf(400));
-        Assertions.assertEquals(response.getBody(), "Empleado con DNI: " + dni + " no tiene credito disponible.");
+        Assertions.assertEquals(response.getBody().getMensaje(), "Empleado con DNI: " + dni + " no tiene credito disponible.");
     }
 }

@@ -1,7 +1,6 @@
 package com.TuPlataCrece.MVP.services;
 
-import com.TuPlataCrece.MVP.exceptions.EmpleadoNotFoundException;
-import com.TuPlataCrece.MVP.exceptions.EmpleadoSinImporteException;
+import com.TuPlataCrece.MVP.dtos.Response;
 import com.TuPlataCrece.MVP.models.EmpleadoRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,17 +15,20 @@ public class LoginUseCase {
         this.empleadoRepository = empleadoRepository;
     }
 
-    public String login(String dni){
-        var empleado = empleadoRepository.findByDni(dni).orElseThrow(()
-                -> new EmpleadoNotFoundException(dni));
-
-        if(empleado.getImporte() == null){
-            empleado.setImportevisto(LocalDate.now());
-            empleadoRepository.save(empleado);
-            throw new EmpleadoSinImporteException(dni);
+    public Response login(String dni){
+        var empleado = empleadoRepository.findByDni(dni);
+        if(empleado.isEmpty()){
+            return new Response(true, dni);
         }
-        empleado.setImportevisto(LocalDate.now());
-        empleadoRepository.save(empleado);
-        return "Se puede solicitar un prestamo por el importe: " + empleado.getImporte();
+
+        if(empleado.get().getImporte() == null){
+            empleado.get().setImportevisto(LocalDate.now());
+            empleadoRepository.save(empleado.get());
+            return new Response(empleado.get().getDni(), false, true, null);
+        }
+
+        empleado.get().setImportevisto(LocalDate.now());
+        empleadoRepository.save(empleado.get());
+        return new Response(empleado.get().getDni(), true, true, empleado.get().getImporte());
     }
 }
