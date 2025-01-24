@@ -1,5 +1,4 @@
 # ChallengeRedLink
-![image](https://github.com/user-attachments/assets/d44b1f80-e99c-4e39-98f5-ee0f3214717d)
 ### Descripcion
 Este repositorio contiene el desarrollo del MVP cuyo objetivo es implementar una API que permita:
 
@@ -21,6 +20,9 @@ Este repositorio contiene el desarrollo del MVP cuyo objetivo es implementar una
 
 	3.	Configuración del proyecto:
     - El proyecto utiliza una base de datos en memoria H2 para simplificar el desarrollo. No se requiere configuración adicional.
+
+### Diagrama
+![image](https://github.com/user-attachments/assets/d44b1f80-e99c-4e39-98f5-ee0f3214717d)
  
 
 
